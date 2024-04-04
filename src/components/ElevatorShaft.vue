@@ -65,20 +65,38 @@ const changeFloor = function (destination, arr) {
     }
     console.log('Оставшиеся шаги: ' + steps)
   } else {
-    console.log('э, это че за хуйня')
+    let steps = destination - arr[currentFloor].count
+
+    console.log('Шагов: ' + steps)
+
+    for (let i = 0; i < steps; i++) {
+      const upTheFloors = () => {
+        setTimeout(
+          () => {
+            arr[index].active = false
+            console.log(arr[index].count)
+            arr[index + 1].active = true
+            index++
+            console.log('Индекс: ' + index)
+          },
+          1000 * (i + 1)
+        )
+      }
+      upTheFloors()
+    }
   }
 }
 
-function upTheFloors() {
-  for (let i = floorsCount.value.length - 1; i >= 0; i--) {
-    floorsCount.value[i].active = false
-    if (floorsCount.value[i].id == destination.value - 1) {
-      floorsCount.value[i].active = true
-      break
-    }
-  }
-  destination.value = null
-}
+// function upTheFloors() {
+//   for (let i = floorsCount.value.length - 1; i >= 0; i--) {
+//     floorsCount.value[i].active = false
+//     if (floorsCount.value[i].id == destination.value - 1) {
+//       floorsCount.value[i].active = true
+//       break
+//     }
+//   }
+//   destination.value = null
+// }
 </script>
 
 <style scoped>
