@@ -1,7 +1,10 @@
 <template>
   <div v-if="props.isActive === true">
     <div class="elevator--floor">
+      <div v-show="props.up">вверх</div>
       <div class="floor--number">{{ floor }}</div>
+      <!-- <component :is="props.down"> Вниз </component> -->
+      <div v-show="props.down">вниз</div>
     </div>
     <div class="elevator--unit">
       <div
@@ -32,6 +35,12 @@ const props = defineProps({
   isActive: {
     type: Boolean,
     required: true
+  },
+  up: {
+    type: Boolean
+  },
+  down: {
+    type: Boolean
   }
 })
 </script>
