@@ -1,4 +1,5 @@
 <template>
+  <!-- <button @click="elevation.changeFloor">погнали нахуй</button> -->
   <ul class="elevator--buttons">
     <li v-for="item in elevation.floorsCount.floors.slice().reverse()" :key="item.id">
       <ElevatorButton :floor="item.id" />
@@ -15,7 +16,8 @@ const elevation = useElevationStore()
 
 watch(elevation.floorsCount.destiny, (newX) => {
   if (newX && !elevation.floorsCount.isResting) {
-    console.log('я сработал:' + elevation.floorsCount.isResting)
+    console.log('я сработал')
+    // console.log(newX[0])
     elevation.changeFloor()
     // if (newQueue && !elevation.floorsCount.isResting && newQueue !== undefined) {
     //   if (elevation.floorsCount.destiny.front() !== elevation.currentFloor.value) {
@@ -23,10 +25,25 @@ watch(elevation.floorsCount.destiny, (newX) => {
     //     elevation.changeFloor()
     //   }
   } else {
-    // console.log(newQueue)
+    console.log('не запущен')
     // console.log(oldQueue)
   }
 })
+// watch(elevation.floorsCount.destiny, (newDestiny, oldDestiny) => {
+//   if (
+//     // newDestiny &&
+//     // newDestiny.length > 0 &&
+//     newDestiny[0] !== elevation.floorsCount.currentFloor &&
+//     !elevation.floorsCount.isResting
+//   ) {
+//     elevation.changeFloor()
+//   } else {
+//     console.log('length' + newDestiny.length)
+//     console.log('first' + newDestiny[0])
+//     console.log('current' + elevation.floorsCount.currentFloor)
+//     console.log(newDestiny)
+//   }
+// })
 </script>
 
 <style scoped>

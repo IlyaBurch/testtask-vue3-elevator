@@ -26,6 +26,7 @@ export const useElevationStore = defineStore('elevation', () => {
   const floorsCount = ref({
     id: 0,
     destiny: new Queue(),
+    currentFloor: 0,
     isResting: false,
     isMoving: false,
     directionUp: false,
@@ -38,15 +39,19 @@ export const useElevationStore = defineStore('elevation', () => {
       { id: 4, count: 5, active: false }
     ]
   })
-  const changeFloor = function () {
+  function changeFloor() {
     // let arr = obj.floors
-    floorsCount
+    floorsCount.value.isMoving = true
     let currentFloor = this.floorsCount.floors.findIndex((el) => el.active === true)
     let destination = this.floorsCount.destiny.front() + 1
     let index = currentFloor
 
     if (destination === undefined) {
       alert('Такого этажа нет')
+      return
+    }
+    if (floorsCount.value.isResting === true) {
+      console.log('А вот и лишний запуск')
       return
     }
 
@@ -59,11 +64,19 @@ export const useElevationStore = defineStore('elevation', () => {
           setTimeout(
             () => {
               this.floorsCount.floors[index].active = false
-              console.log(this.floorsCount.floors[index].count)
+              // console.log(this.floorsCount.floors[index].count)
               this.floorsCount.floors[index - 1].active = true
+              floorsCount.value.currentFloor = index
               index--
-              if (index == this.floorsCount.destiny.front()) {
+              if (
+                index === this.floorsCount.destiny.front() &&
+                floorsCount.value.isMoving === true
+              ) {
                 targetFloor()
+                floorsCount.value.isResting = true
+                floorsCount.value.isMoving = false
+
+                return
               }
             },
             1000 * (i + 1)
@@ -73,19 +86,26 @@ export const useElevationStore = defineStore('elevation', () => {
       }
     } else {
       let steps = destination - this.floorsCount.floors[currentFloor].count
-      floorsCount.value.directionUp = true
-      console.log(floorsCount.value.directionUp)
 
       for (let i = 0; i < steps; i++) {
         const upTheFloors = () => {
           setTimeout(
             () => {
               this.floorsCount.floors[index].active = false
-              console.log(this.floorsCount.floors[index].count)
+              // console.log(this.floorsCount.floors[index].count)
               this.floorsCount.floors[index + 1].active = true
+              floorsCount.value.currentFloor = index
+              floorsCount.value.directionUp = true
               index++
-              if (index === this.floorsCount.destiny.front()) {
+              if (
+                index === this.floorsCount.destiny.front() &&
+                floorsCount.value.isMoving === true
+              ) {
                 targetFloor()
+                floorsCount.value.isResting = true
+                floorsCount.value.isMoving = false
+
+                return
               }
             },
             1000 * (i + 1)
@@ -102,16 +122,22 @@ export const useElevationStore = defineStore('elevation', () => {
 
   function addQueue(destination) {
     this.floorsCount.destiny.enqueue(destination)
-    console.log(destination)
+    // console.log(destination)
   }
 
   function targetFloor() {
-    floorsCount.value.isResting = true
+    // if (floorsCount.value.isResting === false) {
+    //   console.log('А вот и лишний запуск dequeue')
+    //   return
+    // }
     setTimeout(() => {
-      floorsCount.value.destiny.dequeue()
+      console.log('запуск dequeue')
       floorsCount.value.isResting = false
+      floorsCount.value.isMoving = true
       floorsCount.value.directionUp = false
       floorsCount.value.directionDown = false
+      floorsCount.value.isMoving = true
+      floorsCount.value.destiny.dequeue()
     }, 3000)
   }
   return { floorsCount, changeFloor, addFloor, addQueue }
