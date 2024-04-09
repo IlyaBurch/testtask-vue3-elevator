@@ -16,7 +16,7 @@ const elevation = useElevationStore()
 watch(
   elevation.floorsCount.destiny,
   (newX) => {
-    if (newX) {
+    if (newX && !elevation.floorsCount.isResting) {
       elevation.changeFloor()
     }
   },
