@@ -1,1 +1,9 @@
 @import 'normalize.css';
+
+@font-face {
+  font-family: 'digital';
+  src: url(./fonts/DS-DIGI.TTF);
+  style: normal;
+  weight: 400;
+  stretch: 100;
+}

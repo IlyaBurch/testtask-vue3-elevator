@@ -1,11 +1,17 @@
 <template>
-  <div>
+  <div class="elevator--main">
     <ElevatorShaft />
+    <ElevatorControl />
   </div>
 </template>
 
 <script setup>
 import ElevatorShaft from './ElevatorShaft.vue'
+import ElevatorControl from './ElevatorControl.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+.elevator--main {
+  display: flex;
+}
+</style>
