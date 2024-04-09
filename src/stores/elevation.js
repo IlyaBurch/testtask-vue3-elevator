@@ -71,7 +71,6 @@ export const useElevationStore = defineStore(
             setTimeout(
               () => {
                 this.floorsCount.floors[index].active = false
-                // console.log(this.floorsCount.floors[index].count)
                 this.floorsCount.floors[index - 1].active = true
                 floorsCount.value.currentFloor = index
                 index--
@@ -98,10 +97,8 @@ export const useElevationStore = defineStore(
             setTimeout(
               () => {
                 this.floorsCount.floors[index].active = false
-                // console.log(this.floorsCount.floors[index].count)
                 this.floorsCount.floors[index + 1].active = true
                 floorsCount.value.currentFloor = index
-                // floorsCount.value.destination = index
                 floorsCount.value.directionUp = true
                 index++
                 if (
@@ -129,16 +126,10 @@ export const useElevationStore = defineStore(
 
     function addQueue(destination) {
       this.floorsCount.destiny.enqueue(destination)
-      // console.log(destination)
     }
 
     function targetFloor() {
-      // if (floorsCount.value.isResting === false) {
-      //   console.log('А вот и лишний запуск dequeue')
-      //   return
-      // }
       setTimeout(() => {
-        console.log('запуск dequeue')
         floorsCount.value.isResting = false
         floorsCount.value.isMoving = true
         floorsCount.value.directionUp = false

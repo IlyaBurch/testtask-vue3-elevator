@@ -21,7 +21,6 @@ const props = defineProps({
 function addQueue() {
   elevation.addQueue(props.floor)
   elevation.floorsCount.isMoving = true
-  console.log(elevation.floorsCount.destiny.items.length)
 }
 </script>
 

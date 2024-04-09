@@ -17,7 +17,6 @@ watch(
   elevation.floorsCount.destiny,
   (newX) => {
     if (newX) {
-      console.log(newX.length)
       elevation.changeFloor()
     }
   },

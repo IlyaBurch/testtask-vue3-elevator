@@ -27,23 +27,6 @@ import { useElevationStore } from '@/stores/elevation'
 const elevation = useElevationStore()
 
 let isOpen = ref(false)
-// const openDoors = function () {
-//   isOpen.value = !isOpen.value
-// }
-
-// watch(elevation.floorsCount.destiny, (newQueue) => {
-//   if (newQueue && !elevation.floorsCount.isResting && newQueue !== undefined) {
-//     console.log('я сработал:' + newQueue.front())
-//     elevation.changeFloor()
-//     // if (newQueue && !elevation.floorsCount.isResting && newQueue !== undefined) {
-//     //   if (elevation.floorsCount.destiny.front() !== elevation.currentFloor.value) {
-//     //     console.log('я сработал:' + newQueue.front())
-//     //     elevation.changeFloor()
-//     //   }
-//   } else {
-//     console.log('я не отработал')
-//   }
-// })
 </script>
 
 <style scoped>
