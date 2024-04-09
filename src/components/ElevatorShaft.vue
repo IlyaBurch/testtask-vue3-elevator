@@ -9,7 +9,7 @@
     >
       <ElevatorUnit
         :isOpened="elevation.floorsCount.isResting"
-        :floor="elevation.floorsCount.destiny[0]"
+        :floor="elevation.floorsCount.destination"
         :isActive="item.active"
         :up="elevation.floorsCount.directionUp"
         :down="elevation.floorsCount.directionDown"

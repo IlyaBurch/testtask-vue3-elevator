@@ -1,7 +1,6 @@
 <template>
   <div class="elevator--button">
     <Button icon="pi pi-circle" @click="addQueue" />
-    {{ props.floor + 1 }}
   </div>
 </template>
 
