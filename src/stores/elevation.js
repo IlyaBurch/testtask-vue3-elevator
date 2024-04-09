@@ -10,6 +10,14 @@ export const useElevationStore = defineStore(
       }
 
       enqueue(item) {
+        // const isEqual = (el) => el === item
+        // const findNum = this.items.find((el) => el === item)
+        // if (this.items.length === 0) {
+        //   this.items.push(item)
+        // }
+        // if (findNum !== undefined) {
+        //   this.items.push(item)
+        // }
         this.items.push(item)
       }
 

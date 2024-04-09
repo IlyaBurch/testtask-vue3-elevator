@@ -19,8 +19,17 @@ const props = defineProps({
 })
 
 function addQueue() {
-  elevation.addQueue(props.floor)
-  elevation.floorsCount.isMoving = true
+  const findNum = elevation.floorsCount.destiny.items.find((el) => el === props.floor)
+  // if (elevation.floorsCount.destiny.items.length === 0) {
+  //   elevation.addQueue(props.floor)
+  //   elevation.floorsCount.isMoving = true
+  // }
+  if (findNum === undefined) {
+    elevation.addQueue(props.floor)
+    elevation.floorsCount.isMoving = true
+  }
+  // elevation.addQueue(props.floor)
+  // elevation.floorsCount.isMoving = true
 }
 </script>
 
