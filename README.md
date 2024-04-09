@@ -15,7 +15,9 @@
 ## Использовал это:
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - как редактор кода.
+
 [PrimeVue](https://primevue.org/) как UI библиотеку для кнопок и будущего компонента, который будет управлять кол-вом этажей и шахт лифтов.
+
 [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/) для работы с localstorage внутри Pinia.
 
 
