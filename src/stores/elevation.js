@@ -50,6 +50,21 @@ export const useElevationStore = defineStore(
         { id: 4, count: 5, active: false }
       ]
     })
+    function repair() {
+      floorsCount.value.floorsCount.destiny.items = []
+      floorsCount.value.floorsCount.floors = [
+        { id: 0, count: 1, active: true },
+        { id: 1, count: 2, active: false },
+        { id: 2, count: 3, active: false },
+        { id: 3, count: 4, active: false },
+        { id: 4, count: 5, active: false }
+      ]
+      floorsCount.value.floorsCount.isResting = false
+      floorsCount.value.floorsCount.isMoving = true
+      floorsCount.value.floorsCount.directionUp = false
+      floorsCount.value.floorsCount.directionDown = false
+      location.reload()
+    }
     function changeFloor() {
       // let arr = obj.floors
       floorsCount.value.isMoving = true
@@ -145,7 +160,7 @@ export const useElevationStore = defineStore(
         floorsCount.value.destiny.dequeue()
       }, 3000)
     }
-    return { floorsCount, changeFloor, addFloor, addQueue }
+    return { floorsCount, changeFloor, addFloor, addQueue, repair }
   },
   {
     persist: true
