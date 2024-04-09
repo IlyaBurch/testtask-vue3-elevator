@@ -12,6 +12,8 @@
 
 Понимаю, что вместо того, чтобы делать анимации и в целом верстать лифт мог реализовать расширенную часть тестового, но я не смог отказать себе в удовольствии сделать более-менее симпатичный лифт :)
 
+Для удобства проверки настроил деплой на [Vercel](https://testtask-vue3-elevator.vercel.app/) и оставил включенным Vue DevTools 
+
 ## Использовал это:
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - как редактор кода.
