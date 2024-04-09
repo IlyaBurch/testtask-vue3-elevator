@@ -1,35 +1,52 @@
 # testtask-vue3-elevator
 
-This template should help get you started developing with Vue 3 in Vite.
+# Эмулятор лифтов на Vue 3.
 
-## Recommended IDE Setup
+Расширенное задание не успел сделать, так как из 7 отведенных дней свободных было 2.5, но проектировал изначально с возможностью расширения - для реализации мне хватит еще 1 дня работы.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Систему движения лифта сделал на основе Pinia - в ней хранится очередь для лифта, и метод для движения лифта. Движение лифта запускается наблюдателем в компоненте ElevatorControll на основе изменения в очереди и отслеживания состояния лифта - в идеале делать отдельный функциональный компонент для этого, но времени не хватило. Решил использовать стейт менеджер вместо provide/inject ради более удобного контроля над очередью и состояниями лифта внутри DevTools
 
-## Customize configuration
+На доделывания анимации лифта так же не хватило времени - решение вижу в еще одном условной отрисовки компонента ElevatorUnit, чтобы в состоянии движения двери были закрыты, и при отдыхе отрисовывались двери с анимацией.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Использовал это:
 
-## Project Setup
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - как редактор кода.
+[PrimeVue](https://primevue.org/) как UI библиотеку для кнопок и будущего компонента, который будет управлять кол-вом этажей и шахт лифтов.
+[pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/) для работы с localstorage внутри Pinia.
 
-```sh
+
+## Установить зависимости
+
+```npm
 npm install
 ```
+```pnpm
+pnpm i
+```
 
-### Compile and Hot-Reload for Development
+### Запустить dev - режим
 
-```sh
+```npm
 npm run dev
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+```pnpm
+pnpm dev
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Компилировать проект
 
-```sh
+```npm
+npm run build
+```
+```pnpm
+pnpm build
+```
+
+### Запустить линтер [ESLint](https://eslint.org/)
+
+```npm
 npm run lint
+```
+```pnpm
+pnpm lint
 ```
